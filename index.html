@@ -290,6 +290,8 @@
     });
     answers = {};
     submitted = false;
+    document.getElementById('btnSubmit').disabled = false;
+    document.getElementById('footerHint').textContent = 'Trả lời hết rồi bấm nộp bài nhé.';
     renderModuleBadges(counts);
     renderQuiz();
     renderSummaryZone();
@@ -414,7 +416,8 @@
       tag.classList.add('show');
       if (isCorrect){ tag.classList.add('ok'); tag.textContent = '✓ Đúng'; }
       else { tag.classList.add('no'); tag.textContent = sel.length===0 ? '— Chưa trả lời' : '✗ Sai'; }
-      card.classList.remove('unanswered-flag');
+      if (sel.length === 0){ card.classList.add('unanswered-flag'); }
+      else { card.classList.remove('unanswered-flag'); }
     });
  
     return {correctCount: correctCount, perModule: perModule};
@@ -459,3 +462,4 @@
 </script>
 </body>
 </html>
+ 
